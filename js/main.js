@@ -36,15 +36,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  /* ---------- Active nav link ---------- */
-  var currentPage = (window.location.pathname.split('/').pop() || 'index.html');
-  document.querySelectorAll('.nav-desktop a, .nav-mobile a').forEach(function (link) {
-    var href = link.getAttribute('href');
-    if (href === currentPage || (currentPage === '' && href === 'index.html')) {
-      link.classList.add('active');
-    }
-  });
-
   /* ---------- Back to top ---------- */
   var backToTop = document.querySelector('.back-to-top');
   if (backToTop) {
@@ -69,27 +60,22 @@ document.addEventListener('DOMContentLoaded', function () {
     revealEls.forEach(function (el) { el.classList.add('is-visible'); });
   }
 
-  /* ---------- FAQ accordion ---------- */
-  document.querySelectorAll('.accordion-item').forEach(function (item) {
-    var trigger = item.querySelector('.accordion-trigger');
-    var panel = item.querySelector('.accordion-panel');
-    if (!trigger || !panel) return;
-    trigger.addEventListener('click', function () {
-      var isOpen = item.classList.contains('is-open');
-      item.parentElement.querySelectorAll('.accordion-item').forEach(function (other) {
-        other.classList.remove('is-open');
-        other.querySelector('.accordion-panel').style.maxHeight = null;
-      });
-      if (!isOpen) {
-        item.classList.add('is-open');
-        panel.style.maxHeight = panel.scrollHeight + 'px';
-      }
-    });
-  });
-
   /* ---------- Contact form (front-end only) ---------- */
   var form = document.querySelector('[data-contact-form]');
   if (form) {
+    var captchaLabel = form.querySelector('[data-captcha-label]');
+    var captchaInput = form.querySelector('[data-captcha-input]');
+    var captchaAnswer = 0;
+
+    function newCaptcha() {
+      var a = 1 + Math.floor(Math.random() * 9);
+      var b = 1 + Math.floor(Math.random() * 9);
+      captchaAnswer = a + b;
+      if (captchaLabel) captchaLabel.textContent = '¿Cuánto es ' + a + ' + ' + b + '?';
+      if (captchaInput) captchaInput.value = '';
+    }
+    newCaptcha();
+
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       var valid = true;
@@ -100,6 +86,9 @@ document.addEventListener('DOMContentLoaded', function () {
         if (field.type === 'email' && fieldValid) {
           fieldValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
         }
+        if (field === captchaInput) {
+          fieldValid = parseInt(value, 10) === captchaAnswer;
+        }
         if (wrap) wrap.classList.toggle('has-error', !fieldValid);
         if (!fieldValid) valid = false;
       });
@@ -107,9 +96,12 @@ document.addEventListener('DOMContentLoaded', function () {
       if (valid) {
         if (success) success.classList.add('is-visible');
         form.reset();
+        newCaptcha();
         if (success) {
           setTimeout(function () { success.classList.remove('is-visible'); }, 6000);
         }
+      } else {
+        newCaptcha();
       }
     });
     form.querySelectorAll('input, textarea').forEach(function (field) {
