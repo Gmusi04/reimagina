@@ -211,7 +211,7 @@ html:not(.js) .reveal { opacity: 1; transform: none; }
 }
 
 .brand { display: flex; align-items: center; }
-.brand-logo { height: 28px; width: auto; }
+.brand-logo { height: 34px; width: auto; }
 
 .nav-desktop { display: flex; align-items: center; gap: 6px; }
 .nav-desktop a {
@@ -226,6 +226,8 @@ html:not(.js) .reveal { opacity: 1; transform: none; }
 .nav-desktop a.active { color: var(--gold-400); }
 
 .header-cta { display: flex; align-items: center; gap: 14px; }
+.header-cta .btn-primary { box-shadow: none; }
+.header-cta .btn-primary:hover { box-shadow: none; }
 .nav-toggle {
   display: none;
   width: 44px; height: 44px;
