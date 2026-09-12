@@ -1,0 +1,10 @@
+{
+  "name": "reimagina-sitio-web",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Sitio web de Reimagina Business Consulting — HTML/CSS/JS estático, sin build.",
+  "scripts": {
+    "start": "npx --yes serve .",
+    "build": "echo 'Sitio estático: no requiere build'"
+  }
+}
