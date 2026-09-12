@@ -60,6 +60,39 @@ document.addEventListener('DOMContentLoaded', function () {
     revealEls.forEach(function (el) { el.classList.add('is-visible'); });
   }
 
+  /* ---------- Animated counters ---------- */
+  var counters = document.querySelectorAll('[data-counter]');
+  if ('IntersectionObserver' in window && counters.length) {
+    var counterIo = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        animateCounter(entry.target);
+        counterIo.unobserve(entry.target);
+      });
+    }, { threshold: 0.4 });
+    counters.forEach(function (el) { counterIo.observe(el); });
+  } else {
+    counters.forEach(function (el) {
+      el.textContent = el.getAttribute('data-counter') + (el.getAttribute('data-suffix') || '');
+    });
+  }
+  function animateCounter(el) {
+    var target = parseFloat(el.getAttribute('data-counter'));
+    var suffix = el.getAttribute('data-suffix') || '';
+    var duration = 1400;
+    var start = null;
+    function step(ts) {
+      if (!start) start = ts;
+      var progress = Math.min((ts - start) / duration, 1);
+      var eased = 1 - Math.pow(1 - progress, 3);
+      var value = Math.round(target * eased);
+      el.textContent = value + suffix;
+      if (progress < 1) requestAnimationFrame(step);
+      else el.textContent = target + suffix;
+    }
+    requestAnimationFrame(step);
+  }
+
   /* ---------- Contact form (front-end only) ---------- */
   var form = document.querySelector('[data-contact-form]');
   if (form) {

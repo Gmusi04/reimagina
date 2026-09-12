@@ -32,6 +32,9 @@
   --grad-navy: var(--navy);
   --grad-gold: var(--orange);
 
+  /* Repeating triangle motif from the logo mark, used as a subtle texture on navy sections */
+  --pattern-triangles: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScxNjAnIGhlaWdodD0nMTYwJz48ZyBmaWxsPSdub25lJyBzdHJva2U9JyNmZmZmZmYnIHN0cm9rZS1vcGFjaXR5PScwLjA1JyBzdHJva2Utd2lkdGg9JzInIHN0cm9rZS1saW5lam9pbj0ncm91bmQnPjxwb2x5Z29uIHBvaW50cz0nMTQsMTQgNzQsMzQgMjYsNzQnLz48cG9seWdvbiBwb2ludHM9JzkyLDgyIDE1MiwxMDIgMTA0LDE0MicvPjwvZz48L3N2Zz4=");
+
   /* Type */
   --font-head: 'Playfair Display', Georgia, 'Times New Roman', serif;
   --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -275,7 +278,7 @@ html:not(.js) .reveal { opacity: 1; transform: none; }
    ========================================================================== */
 .hero {
   position: relative;
-  background: var(--grad-navy);
+  background: var(--grad-navy) var(--pattern-triangles) repeat;
   color: var(--white);
   padding: 168px 0 120px;
   overflow: hidden;
@@ -323,6 +326,17 @@ html:not(.js) .reveal { opacity: 1; transform: none; }
   border-radius: var(--radius-md);
   padding: 28px;
   color: var(--slate-700);
+}
+.mini-chart { margin-bottom: 18px; }
+.mini-chart svg { width: 100%; height: 72px; display: block; }
+.mini-chart-label {
+  display: block;
+  margin-top: 8px;
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--gold-600);
 }
 .hero-card-inner h3 { font-size: 1.15rem; margin-bottom: 6px; }
 .hero-card-list { display: flex; flex-direction: column; gap: 14px; margin-top: 18px; }
@@ -445,7 +459,7 @@ html:not(.js) .reveal { opacity: 1; transform: none; }
 /* ==========================================================================
    Testimonials
    ========================================================================== */
-.testimonials { background: var(--navy-900); color: var(--white); position: relative; overflow: hidden; }
+.testimonials { background: var(--navy-900) var(--pattern-triangles) repeat; color: var(--white); position: relative; overflow: hidden; }
 .testimonials::before {
   content: '';
   position: absolute; inset: 0;
@@ -500,7 +514,7 @@ html:not(.js) .reveal { opacity: 1; transform: none; }
    Page hero (subpages)
    ========================================================================== */
 .page-hero {
-  background: var(--grad-navy);
+  background: var(--grad-navy) var(--pattern-triangles) repeat;
   color: var(--white);
   padding: 158px 0 90px;
   position: relative;
@@ -531,7 +545,7 @@ html:not(.js) .reveal { opacity: 1; transform: none; }
 .check-list span { color: var(--slate-500); font-size: .92rem; }
 
 .visual-panel {
-  background: var(--grad-navy);
+  background: var(--grad-navy) var(--pattern-triangles) repeat;
   border-radius: var(--radius-lg);
   padding: 40px;
   color: var(--white);
@@ -654,7 +668,7 @@ html:not(.js) .reveal { opacity: 1; transform: none; }
 /* ==========================================================================
    Footer
    ========================================================================== */
-.site-footer { background: var(--navy-900); color: rgba(255,255,255,.7); padding-top: 72px; }
+.site-footer { background: var(--navy-900) var(--pattern-triangles) repeat; color: rgba(255,255,255,.7); padding-top: 72px; }
 .footer-grid { display: grid; grid-template-columns: 1.4fr .8fr .8fr 1fr; gap: 40px; padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,.1); }
 @media (max-width: 900px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 560px) { .footer-grid { grid-template-columns: 1fr; } }
