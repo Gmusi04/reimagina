@@ -200,18 +200,18 @@ html:not(.js) .reveal { opacity: 1; transform: none; }
   top: 0; left: 0; right: 0;
   z-index: 500;
   padding: 18px 0;
-  transition: background .35s var(--ease), padding .35s var(--ease), box-shadow .35s var(--ease);
+  background: var(--navy);
+  transition: padding .35s var(--ease), box-shadow .35s var(--ease);
 }
 .site-header .container { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
 .site-header.is-scrolled {
-  background: rgba(21, 30, 53, 0.92);
   backdrop-filter: blur(10px);
   padding: 12px 0;
   box-shadow: 0 8px 24px rgba(21,30,53,.28);
 }
 
 .brand { display: flex; align-items: center; }
-.brand-logo { height: 42px; width: auto; }
+.brand-logo { height: 28px; width: auto; }
 
 .nav-desktop { display: flex; align-items: center; gap: 6px; }
 .nav-desktop a {
