@@ -69,67 +69,6 @@ document.addEventListener('DOMContentLoaded', function () {
     revealEls.forEach(function (el) { el.classList.add('is-visible'); });
   }
 
-  /* ---------- Animated counters ---------- */
-  var counters = document.querySelectorAll('[data-counter]');
-  if ('IntersectionObserver' in window && counters.length) {
-    var counterIo = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (!entry.isIntersecting) return;
-        animateCounter(entry.target);
-        counterIo.unobserve(entry.target);
-      });
-    }, { threshold: 0.4 });
-    counters.forEach(function (el) { counterIo.observe(el); });
-  }
-  function animateCounter(el) {
-    var target = parseFloat(el.getAttribute('data-counter'));
-    var suffix = el.getAttribute('data-suffix') || '';
-    var duration = 1400;
-    var start = null;
-    function step(ts) {
-      if (!start) start = ts;
-      var progress = Math.min((ts - start) / duration, 1);
-      var eased = 1 - Math.pow(1 - progress, 3);
-      var value = Math.round(target * eased);
-      el.textContent = value + suffix;
-      if (progress < 1) requestAnimationFrame(step);
-      else el.textContent = target + suffix;
-    }
-    requestAnimationFrame(step);
-  }
-
-  /* ---------- Testimonial slider ---------- */
-  var slider = document.querySelector('[data-testimonial-slider]');
-  if (slider) {
-    var slides = slider.querySelectorAll('.testi-slide');
-    var dotsWrap = slider.querySelector('.testi-dots');
-    var current = 0;
-    var timer;
-
-    slides.forEach(function (_, i) {
-      var dot = document.createElement('button');
-      dot.type = 'button';
-      dot.setAttribute('aria-label', 'Ver testimonio ' + (i + 1));
-      if (i === 0) dot.classList.add('is-active');
-      dot.addEventListener('click', function () { goTo(i); resetTimer(); });
-      dotsWrap.appendChild(dot);
-    });
-    var dots = dotsWrap.querySelectorAll('button');
-
-    function goTo(index) {
-      slides[current].classList.remove('is-active');
-      dots[current].classList.remove('is-active');
-      current = (index + slides.length) % slides.length;
-      slides[current].classList.add('is-active');
-      dots[current].classList.add('is-active');
-    }
-    function resetTimer() {
-      clearInterval(timer);
-      timer = setInterval(function () { goTo(current + 1); }, 6500);
-    }
-    if (slides.length > 1) resetTimer();
-  }
-
   /* ---------- FAQ accordion ---------- */
   document.querySelectorAll('.accordion-item').forEach(function (item) {
     var trigger = item.querySelector('.accordion-trigger');
