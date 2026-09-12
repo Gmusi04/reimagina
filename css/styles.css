@@ -168,6 +168,8 @@ section { position: relative; }
 }
 .icon-wrap svg { width: 26px; height: 26px; }
 .icon-wrap.light { background: var(--gold-100); color: var(--gold-600); }
+.icon-wrap.sm { width: 40px; height: 40px; border-radius: 12px; }
+.icon-wrap.sm svg { width: 20px; height: 20px; }
 
 /* ---- Reveal-on-scroll ---- */
 .reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
@@ -441,7 +443,9 @@ html:not(.js) .reveal { opacity: 1; transform: none; }
   border: 4px solid var(--cream-50);
   box-shadow: var(--shadow-sm);
 }
+.timeline-heading { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
 .timeline-item h3 { font-size: 1.25rem; margin-bottom: 8px; }
+.timeline-heading h3 { margin-bottom: 0; }
 .timeline-item p { color: var(--slate-500); max-width: 640px; }
 @media (max-width: 620px) {
   .timeline::before { left: 27px; }
