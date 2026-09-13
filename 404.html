@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+<script>document.documentElement.className="js";</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Página no encontrada | Reimagina</title>
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="stylesheet" href="css/styles.v5.css">
+<style>
+  .error-page {
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: var(--navy) var(--pattern-triangles) repeat;
+    color: var(--white);
+    padding: 40px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .error-page::before {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    opacity: .45;
+    width: 560px; height: 560px;
+    background: radial-gradient(circle at 30% 30%, rgba(248,177,51,.32), transparent 70%);
+    top: -200px; right: -160px;
+  }
+  .error-inner { position: relative; z-index: 2; max-width: 520px; }
+  .error-inner img { height: 40px; width: auto; margin-bottom: 40px; }
+  .error-code {
+    font-family: var(--font-head);
+    font-size: clamp(4rem, 12vw, 7rem);
+    color: var(--orange);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .error-inner h1 { color: var(--white); font-size: clamp(1.4rem, 3vw, 1.9rem); margin-bottom: 14px; }
+  .error-inner p { color: rgba(255,255,255,.72); margin-bottom: 32px; }
+</style>
+</head>
+<body>
+
+<section class="error-page">
+  <div class="error-inner">
+    <a href="index.html"><img src="logo.png" alt="Reimagina — Consultoría Estratégica para PyMEs"></a>
+    <div class="error-code">404</div>
+    <h1>Esta página no existe</h1>
+    <p>Puede que el enlace esté roto o que la página se haya movido. Regresemos a un lugar conocido.</p>
+    <a href="index.html" class="btn btn-primary">
+      Volver al inicio
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </a>
+  </div>
+</section>
+
+</body>
+</html>
