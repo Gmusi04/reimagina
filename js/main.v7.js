@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', function () {
     requestAnimationFrame(step);
   }
 
-  /* ---------- Contact form (submits to Formspree) ---------- */
+  /* ---------- Contact form (front-end only) ---------- */
   var form = document.querySelector('[data-contact-form]');
   if (form) {
     var captchaLabel = form.querySelector('[data-captcha-label]');
@@ -108,8 +108,6 @@ document.addEventListener('DOMContentLoaded', function () {
       if (captchaInput) captchaInput.value = '';
     }
     newCaptcha();
-
-    var submitBtn = form.querySelector('button[type="submit"]');
 
     form.addEventListener('submit', function (e) {
       e.preventDefault();
@@ -128,37 +126,37 @@ document.addEventListener('DOMContentLoaded', function () {
         if (!fieldValid) valid = false;
       });
       var success = form.querySelector('.form-success');
-      var errorBanner = form.querySelector('.form-error');
-      if (!valid) {
+      if (valid) {
+        var nombre = form.nombre.value.trim();
+        var empresa = form.empresa.value.trim();
+        var telefono = form.telefono.value.trim();
+        var email = form.email.value.trim();
+        var mensaje = form.mensaje.value.trim();
+
+        var subject = 'Nueva solicitud de diagnóstico - ' + nombre;
+        var body = [
+          'Nombre: ' + nombre,
+          'Empresa: ' + (empresa || '(no proporcionada)'),
+          'Teléfono: ' + telefono,
+          'Correo: ' + email,
+          '',
+          'Reto de negocio:',
+          mensaje || '(sin detalles adicionales)'
+        ].join('\n');
+        var mailtoUrl = 'mailto:contacto@reimagina.com.mx,jleon@reimagina.com.mx' +
+          '?subject=' + encodeURIComponent(subject) +
+          '&body=' + encodeURIComponent(body);
+
+        if (success) success.classList.add('is-visible');
+        window.location.href = mailtoUrl;
+        form.reset();
         newCaptcha();
-        return;
-      }
-
-      var formData = new FormData(form);
-      formData.delete('captcha');
-      if (errorBanner) errorBanner.classList.remove('is-visible');
-      if (submitBtn) submitBtn.disabled = true;
-
-      fetch(form.action, {
-        method: 'POST',
-        body: formData,
-        headers: { 'Accept': 'application/json' }
-      }).then(function (response) {
-        if (response.ok) {
-          if (success) {
-            success.classList.add('is-visible');
-            setTimeout(function () { success.classList.remove('is-visible'); }, 6000);
-          }
-          form.reset();
-        } else {
-          if (errorBanner) errorBanner.classList.add('is-visible');
+        if (success) {
+          setTimeout(function () { success.classList.remove('is-visible'); }, 6000);
         }
-      }).catch(function () {
-        if (errorBanner) errorBanner.classList.add('is-visible');
-      }).finally(function () {
+      } else {
         newCaptcha();
-        if (submitBtn) submitBtn.disabled = false;
-      });
+      }
     });
     form.querySelectorAll('input, textarea').forEach(function (field) {
       field.addEventListener('input', function () {
