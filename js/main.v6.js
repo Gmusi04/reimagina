@@ -127,28 +127,7 @@ document.addEventListener('DOMContentLoaded', function () {
       });
       var success = form.querySelector('.form-success');
       if (valid) {
-        var nombre = form.nombre.value.trim();
-        var empresa = form.empresa.value.trim();
-        var telefono = form.telefono.value.trim();
-        var email = form.email.value.trim();
-        var mensaje = form.mensaje.value.trim();
-
-        var subject = 'Nueva solicitud de diagnóstico - ' + nombre;
-        var body = [
-          'Nombre: ' + nombre,
-          'Empresa: ' + (empresa || '(no proporcionada)'),
-          'Teléfono: ' + telefono,
-          'Correo: ' + email,
-          '',
-          'Reto de negocio:',
-          mensaje || '(sin detalles adicionales)'
-        ].join('\n');
-        var mailtoUrl = 'mailto:contacto@reimagina.com.mx,jleon@reimagina.com.mx' +
-          '?subject=' + encodeURIComponent(subject) +
-          '&body=' + encodeURIComponent(body);
-
         if (success) success.classList.add('is-visible');
-        window.location.href = mailtoUrl;
         form.reset();
         newCaptcha();
         if (success) {
