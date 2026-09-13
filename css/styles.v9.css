@@ -612,10 +612,7 @@ html:not(.js) .reveal { opacity: 1; transform: none; }
 .check-list span { color: var(--slate-500); font-size: .92rem; }
 
 .visual-panel {
-  background-image: linear-gradient(160deg, rgba(21,30,53,.88), rgba(21,30,53,.74)), var(--pattern-triangles), url("../img/oficina-vidrio.jpg");
-  background-position: center, center, center;
-  background-size: cover, 160px 160px, cover;
-  background-repeat: no-repeat, repeat, no-repeat;
+  background: var(--grad-navy) var(--pattern-triangles) repeat;
   border-radius: var(--radius-lg);
   padding: 40px;
   color: var(--white);
