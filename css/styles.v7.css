@@ -612,7 +612,10 @@ html:not(.js) .reveal { opacity: 1; transform: none; }
 .check-list span { color: var(--slate-500); font-size: .92rem; }
 
 .visual-panel {
-  background: var(--grad-navy) var(--pattern-triangles) repeat;
+  background-image: linear-gradient(160deg, rgba(21,30,53,.88), rgba(21,30,53,.74)), var(--pattern-triangles), url("../img/oficina-vidrio.jpg");
+  background-position: center, center, center;
+  background-size: cover, 160px 160px, cover;
+  background-repeat: no-repeat, repeat, no-repeat;
   border-radius: var(--radius-lg);
   padding: 40px;
   color: var(--white);
@@ -654,6 +657,22 @@ html:not(.js) .reveal { opacity: 1; transform: none; }
   .photo-banner img { height: 220px; }
   .photo-grid-2 { grid-template-columns: 1fr; }
   .photo-grid-2 img { height: 220px; }
+}
+
+.photo-collage { position: relative; margin-left: 6%; }
+.photo-collage .main-photo {
+  width: 100%; height: 360px; object-fit: cover;
+  border-radius: var(--radius-lg); box-shadow: var(--shadow-md); display: block;
+}
+.photo-collage .accent-photo {
+  position: absolute; bottom: -32px; left: -6%;
+  width: 55%; height: 190px; object-fit: cover;
+  border-radius: var(--radius-md); box-shadow: var(--shadow-lg);
+  border: 6px solid var(--white); display: block;
+}
+@media (max-width: 900px) {
+  .photo-collage { margin-left: 0; margin-bottom: 32px; }
+  .photo-collage .accent-photo { position: static; width: 100%; height: 220px; margin-top: 16px; border: none; }
 }
 
 /* ==========================================================================
