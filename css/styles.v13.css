@@ -222,6 +222,9 @@ html:not(.js) .reveal { opacity: 1; transform: none; }
   padding: 12px 0;
   box-shadow: 0 8px 24px rgba(21,30,53,.28);
 }
+.site-header--home {
+  background: #3f4759;
+}
 .brand { display: flex; align-items: center; }
 .brand-logo { height: 34px; width: auto; }
 
@@ -294,7 +297,7 @@ html:not(.js) .reveal { opacity: 1; transform: none; }
    ========================================================================== */
 .hero {
   position: relative;
-  background: var(--grad-navy) var(--pattern-triangles) repeat;
+  background: #3f4759 var(--pattern-triangles) repeat;
   color: var(--white);
   padding: 128px 0 88px;
   overflow: hidden;
