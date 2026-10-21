@@ -621,6 +621,7 @@ html:not(.js) .reveal { opacity: 1; transform: none; }
   bottom: -60px; left: -60px;
 }
 .visual-panel .quote-mark { font-family: var(--font-head); font-size: 4rem; color: var(--gold-400); line-height: 1; margin-bottom: 6px; }
+.visual-panel .quote-mark.end { align-self: flex-end; margin-top: 6px; margin-bottom: 0; }
 .visual-panel h3 { color: var(--white); font-size: 1.4rem; position: relative; z-index: 2; }
 .visual-panel p { color: rgba(255,255,255,.72); position: relative; z-index: 2; }
 
