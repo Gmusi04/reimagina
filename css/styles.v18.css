@@ -32,6 +32,7 @@
 
   /* Repeating triangle motif from the logo mark, used as a subtle texture on navy sections */
   --pattern-triangles: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScxNjAnIGhlaWdodD0nMTYwJz48ZyBmaWxsPSdub25lJyBzdHJva2U9JyNmZmZmZmYnIHN0cm9rZS1vcGFjaXR5PScwLjA1JyBzdHJva2Utd2lkdGg9JzInIHN0cm9rZS1saW5lam9pbj0ncm91bmQnPjxwb2x5Z29uIHBvaW50cz0nMTQsMTQgNzQsMzQgMjYsNzQnLz48cG9seWdvbiBwb2ludHM9JzkyLDgyIDE1MiwxMDIgMTA0LDE0MicvPjwvZz48L3N2Zz4=");
+  --pattern-triangles-dark: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScxNjAnIGhlaWdodD0nMTYwJz48ZyBmaWxsPSdub25lJyBzdHJva2U9JyMxNTFlMzUnIHN0cm9rZS1vcGFjaXR5PScwLjA3JyBzdHJva2Utd2lkdGg9JzInIHN0cm9rZS1saW5lam9pbj0ncm91bmQnPjxwb2x5Z29uIHBvaW50cz0nMTQsMTQgNzQsMzQgMjYsNzQnLz48cG9seWdvbiBwb2ludHM9JzkyLDgyIDE1MiwxMDIgMTA0LDE0MicvPjwvZz48L3N2Zz4=");
 
   /* Type */
   --font-head: 'Playfair Display', Georgia, 'Times New Roman', serif;
@@ -294,7 +295,7 @@ html:not(.js) .reveal { opacity: 1; transform: none; }
    ========================================================================== */
 .hero {
   position: relative;
-  background: var(--white);
+  background: var(--white) var(--pattern-triangles-dark) repeat;
   color: var(--navy-900);
   padding: 128px 0 88px;
   overflow: hidden;
