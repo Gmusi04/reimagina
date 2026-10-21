@@ -223,13 +223,13 @@ html:not(.js) .reveal { opacity: 1; transform: none; }
   box-shadow: 0 8px 24px rgba(21,30,53,.28);
 }
 .brand { display: flex; align-items: center; }
-.brand-logo { height: 42px; width: auto; }
+.brand-logo { height: 48px; width: auto; }
 
 .nav-desktop { display: flex; align-items: center; gap: 6px; }
 .nav-desktop a {
   color: rgba(255,255,255,.82);
   font-weight: 600;
-  font-size: 1.04rem;
+  font-size: 1.12rem;
   padding: 10px 16px;
   border-radius: 999px;
   transition: background .25s var(--ease), color .25s var(--ease);
